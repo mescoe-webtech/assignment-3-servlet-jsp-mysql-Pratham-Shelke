@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	function validatePass()
+	{
+		var pass=document.forms["login"]["password"].value;
+		if(pass.length<8)
+		{
+			document.getElementById("pass_err").innerHTML="Password should contain atleast 8 characters !!";
+			//document.login.password.focus();
+		}
+		else
+		{
+			document.getElementById("pass_err").innerHTML="";
+		}
+	}
+</script>
+
+<style type="text/css">
+	
+	#login-dev
+	{
+	   margin-left: 40%;
+	   margin-right: 40%;
+	   margin-top: 10%;
+	   padding-left: 10px;
+	   padding-right: 10px;
+	   padding-top: 10px;
+	   padding-bottom: 10px;
+	   border: black;
+	   border-radius: 2px;
+	   border-width: 1px;
+	   border-style: solid;
+	   background-color: wheat;
+	}
+	
+	h1{
+   padding-left: 40%;
+}
+	
+	body{background-color:burlywood;}
+
+</style>
+</head>
+<body>
+	<h1>Welcome !!!</h1>
+	<form action="LoginServlet" method="post" name="login">
+		<div id="login-dev">
+			<h2>Log In</h2>
+			Username : <input type="text" name="username" required><br><br>
+			Password : <input type="password" name="password" onblur="validatePass()" required><br>
+			<span id="pass_err" style="color:firebrick;"></span><br>
+			<button type="submit" value="Submit">Sign In</button><br>
+			<a href="register.html">New ? Register now</a>			
+		</div>
+		
+	</form>
+</body>
+</html>

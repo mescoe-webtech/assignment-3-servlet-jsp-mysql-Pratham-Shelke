@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Register New User</title>
+
+<script type="text/javascript">
+function validatePhnumber()
+{
+   var phnumber=document.forms["registerForm"]["phnumber"].value;
+
+   if(/^[0-9]+$/.test(phnumber) == false)
+   {
+     // alert("Invalid Phone number !");
+      document.getElementById("ph_err").innerHTML="Invalid symbols in phone number !";
+      //document.applicationForm.phnumber.focus();
+   }
+   else
+   if(phnumber.length!=10)
+   {
+      document.getElementById("ph_err").innerHTML="Invalid phone number !";
+      //document.applicationForm.phnumber.focus();
+   }
+   else
+   {
+      document.getElementById("ph_err").innerHTML="";
+   }
+}
+   
+   function validateRePass()
+   {
+
+       var pass=document.registerForm.pass.value;
+       var pass2=document.registerForm.repass.value;
+
+       if(pass!=pass2)
+       {
+           document.getElementById("pass2_err").innerHTML="Password does not match !";
+       		
+       }
+       else
+       {
+           document.getElementById("pass2_err").innerHTML="";
+       }
+   }
+
+</script>
+<style type="text/css">
+	
+		body{background-color:burlywood;}
+	    h1{padding-left:20%;}
+	
+		#register-dev
+		{
+	   background-color: wheat;
+		}
+</style>
+</head>
+<body>
+	<h1>Register a new User !</h1>
+	<fieldset >
+		
+		
+		<form action="RegisterServlet" method="post" name="registerForm">
+			<div id="register-div">
+			<h2>Enter your details</h2>
+			<label for="name">Name : </label><br>
+			<input type="text" name="name" placeholder="Name" required><br><br>
+			<label for="email">Email : </label><br>
+			<input type="text" name="email" placeholder="E-mail" required><br><br>
+			<label for="phnumber">Phone Number : </label><br>
+			<input type="number" name="phnumber" placeholder="Phone Number" onblur="validatePhnumber()" required><br>
+			<span id="ph_err" style="color: firebrick;"></span><br>
+			<label for="username">User name : </label><br>
+			<input type="text" name="username" placeholder="Username" required><br><br>
+			<label for="password">Password : </label><br>
+			<input type="password" name="pass" placeholder="Password" required><br><br>
+			<label for="repass">Re-Enter Password : </label><br>
+			<input type="password" name="repass" placeholder="Re-Enter Password" onblur="validateRePass()" required><br>
+			<span id="pass2_err" style="color: red;"></span><br><br>
+			<input type="submit" value="Register">
+			</div>
+		</form>
+		
+	</fieldset>
+	
+	
+</body>
+</html>
